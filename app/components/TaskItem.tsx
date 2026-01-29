@@ -95,12 +95,12 @@ export function TaskItem({ task, onUpdate, onDelete, onEdit }: TaskItemProps) {
       `}
     >
       <div className="p-4">
-        <div className="flex items-start gap-3">
+        <div className="flex items-center gap-3">
           {/* Checkbox */}
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="shrink-0 mt-1"
+            className="shrink-0 mt-0.5"
           >
             <input
               type="checkbox"
@@ -112,116 +112,110 @@ export function TaskItem({ task, onUpdate, onDelete, onEdit }: TaskItemProps) {
             />
           </motion.div>
 
-          {/* Main Content Area */}
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-              {/* Text Content */}
-              <div className="min-w-0 flex-1">
-                <h3
-                  className={`text-base md:text-lg font-semibold leading-tight mb-1 truncate ${
-                    task.completed
-                      ? "text-gray-500 line-through"
-                      : "text-gray-900"
+          {/* Content */}
+          <div className="flex items-center w-full justify-between">
+            {/* title and description */}
+            <div>
+              <h3
+                className={`text-lg font-semibold leading-tight mb-1 ${
+                  task.completed ? "text-gray-500" : "text-gray-900"
+                }`}
+              >
+                {task.title}
+              </h3>
+
+              {task.description && (
+                <p
+                  className={`text-sm leading-relaxed mb-3 ${
+                    task.completed ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  {task.title}
-                </h3>
-
-                {task.description && (
-                  <p
-                    className={`text-sm leading-relaxed line-clamp-2 ${
-                      task.completed ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {task.description}
-                  </p>
-                )}
-              </div>
-
-              {/* Badges Container */}
-              <div className="flex flex-wrap items-center gap-2 mt-1 lg:mt-0">
-                {/* Category Badge */}
-                <span
-                  className={`inline-flex items-center px-2.5 py-0.5 text-[10px] md:text-xs font-medium rounded-full border capitalize ${categoryStyles[task.category]}`}
-                >
-                  {task.category}
-                </span>
-
-                {/* Priority Badge */}
-                {task.priority && (
-                  <span
-                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] md:text-xs font-medium rounded-full border ${priorityConfig[task.priority].bg} ${priorityConfig[task.priority].border}`}
-                  >
-                    {task.priority === "high" && (
-                      <ArrowUp
-                        size={12}
-                        className={priorityConfig[task.priority].color}
-                      />
-                    )}
-                    {task.priority === "medium" && (
-                      <Minus
-                        size={12}
-                        className={priorityConfig[task.priority].color}
-                      />
-                    )}
-                    {task.priority === "low" && (
-                      <ArrowDown
-                        size={12}
-                        className={priorityConfig[task.priority].color}
-                      />
-                    )}
-                    <span
-                      className={`capitalize ${priorityConfig[task.priority].color}`}
-                    >
-                      {task.priority}
-                    </span>
-                  </span>
-                )}
-
-                {/* Due Date Badge */}
-                {task.dueDate && (
-                  <span
-                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] md:text-xs font-medium rounded-full border ${
-                      isOverdue
-                        ? "bg-red-50 text-red-700 border-red-200"
-                        : "bg-blue-50 text-blue-700 border-blue-200"
-                    }`}
-                  >
-                    {isOverdue ? (
-                      <AlertTriangle size={12} />
-                    ) : (
-                      <Calendar size={12} />
-                    )}
-                    {formatDueDate(task.dueDate)}
-                  </span>
-                )}
-              </div>
+                  {task.description}
+                </p>
+              )}
             </div>
 
-            {/* Footer: Date + Actions */}
-            <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-50 lg:border-none lg:mt-1 lg:pt-0">
-              <span className="inline-flex items-center gap-1 text-[10px] md:text-xs text-gray-400">
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Category Badge */}
+              <span
+                className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full border ${categoryStyles[task.category]}`}
+              >
+                {task.category}
+              </span>
+
+              {/* Priority Badge */}
+              {task.priority && (
+                <span
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full border ${priorityConfig[task.priority].bg} ${priorityConfig[task.priority].border}`}
+                >
+                  {task.priority === "high" && (
+                    <ArrowUp
+                      size={12}
+                      className={priorityConfig[task.priority].color}
+                    />
+                  )}
+                  {task.priority === "medium" && (
+                    <Minus
+                      size={12}
+                      className={priorityConfig[task.priority].color}
+                    />
+                  )}
+                  {task.priority === "low" && (
+                    <ArrowDown
+                      size={12}
+                      className={priorityConfig[task.priority].color}
+                    />
+                  )}
+                  <span className={priorityConfig[task.priority].color}>
+                    {task.priority}
+                  </span>
+                </span>
+              )}
+
+              {/* Due Date Badge */}
+              {task.dueDate && (
+                <span
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full border ${
+                    isOverdue
+                      ? "bg-red-50 text-red-700 border-red-200"
+                      : "bg-blue-50 text-blue-700 border-blue-200"
+                  }`}
+                >
+                  {isOverdue ? (
+                    <AlertTriangle size={12} />
+                  ) : (
+                    <Calendar size={12} />
+                  )}
+                  {formatDueDate(task.dueDate)}
+                  {isOverdue && " (Overdue)"}
+                </span>
+              )}
+
+              {/* Created date - subtle */}
+              <span className="inline-flex items-center gap-1 text-xs text-gray-400">
                 <Clock size={10} />
                 {formatCreatedDate(task.created)}
               </span>
-
-              <div className="flex gap-1">
-                <button
-                  onClick={() => onEdit(task)}
-                  className="p-1.5 md:p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                  aria-label="Edit task"
-                >
-                  <Edit2 size={16} />
-                </button>
-                <button
-                  onClick={() => onDelete(task.id)}
-                  className="p-1.5 md:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                  aria-label="Delete task"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </div>
             </div>
+          </div>
+
+          {/* Actions */}
+          <div className="shrink-0 flex gap-1 transition-opacity">
+            <button
+              onClick={() => onEdit(task)}
+              className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 hover:scale-[1.1] rounded-lg transition-colors"
+              title="Edit task"
+            >
+              <Edit2 size={16} />
+            </button>
+            <button
+              onClick={() => onDelete(task.id)}
+              className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 hover:scale-[1.1] rounded-lg transition-colors"
+              title="Delete task"
+            >
+              <Trash2 size={16} />
+            </button>
           </div>
         </div>
       </div>
