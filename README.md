@@ -75,7 +75,7 @@ A beautiful, modern task management application built with Next.js, featuring a 
 
 5. **Start PocketBase**
    ```bash
-   ./pocketbase serve
+   ./pocketbase.exe serve
    ```
 
 6. **Start the development server**
@@ -91,39 +91,7 @@ A beautiful, modern task management application built with Next.js, featuring a 
 
 ## 🌐 Live Demo
 
-**Live Application**: [https://your-app-name.vercel.app](https://your-app-name.vercel.app)
-
-> Replace with your actual Vercel deployment URL after deployment
-
-## 🏗️ Project Structure
-
-```
-velocity-task-manager/
-├── app/
-│   ├── components/          # React components
-│   │   ├── CategoryFilter.tsx
-│   │   ├── DeleteConfirmation.tsx
-│   │   ├── EmptyState.tsx
-│   │   ├── LoadingSkeleton.tsx
-│   │   ├── TaskForm.tsx
-│   │   ├── TaskItem.tsx
-│   │   ├── TaskList.tsx
-│   │   ├── Toast.tsx
-│   │   └── ToastProvider.tsx
-│   ├── hooks/              # Custom React hooks
-│   │   ├── useTasks.ts
-│   │   └── useToast.ts
-│   ├── lib/                # Utilities and types
-│   │   ├── pocketbase.ts
-│   │   └── types.ts
-│   ├── globals.css         # Global styles with glassmorphism
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Main page component
-├── public/                 # Static assets
-├── .env.local             # Environment variables
-├── package.json
-└── README.md
-```
+**Live Application**: [https://velocity-task-manager.vercel.app/](https://velocity-task-manager.vercel.app/)
 
 ## 🔧 Configuration
 
