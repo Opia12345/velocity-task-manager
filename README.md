@@ -1,36 +1,218 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚡ Velocity Task Manager
 
-## Getting Started
+A beautiful, modern task management application built with Next.js, featuring a stunning glassmorphism design, real-time updates, and seamless user experience.
 
-First, run the development server:
+![Velocity Task Manager](https://img.shields.io/badge/Next.js-16.1.6-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.29.2-pink?style=for-the-badge&logo=framer)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **🎨 Glassmorphism Design** - Modern, translucent UI with backdrop blur effects
+- **⚡ Real-time Updates** - Live synchronization across all connected clients
+- **🔄 Drag & Drop** - Intuitive task reordering with smooth animations
+- **📱 Responsive Design** - Perfect experience on desktop, tablet, and mobile
+- **🎯 Smart Filtering** - Advanced filter dropdown with visual icons and active filter indicators
+- **🔍 Search Functionality** - Search tasks by title and description with live feedback
+- **📊 Advanced Sorting** - Sort by date created, updated, title, completion status, priority, or due date
+- **🔔 Toast Notifications** - Beautiful success/error notifications with glassmorphism
+- **💾 Auto-save** - Changes are saved automatically as you type
+- **🎭 Loading Skeletons** - Smooth loading states with animated placeholders
+- **⚠️ Delete Confirmation** - Prevent accidental deletions with confirmation modals
+- **🎪 Empty States** - Engaging empty states to guide user actions
+- **📊 Progress Tracking** - Visual progress indicators and task statistics
+- **🏷️ Priority Levels** - Set task priorities (Low, Medium, High)
+- **📅 Due Dates** - Add due dates to tasks with overdue tracking
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- PocketBase instance (for backend)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd velocity-task-manager
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Set up environment variables**
+   
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_POCKETBASE_URL=http://localhost:8090
+   ```
+
+4. **Set up PocketBase**
+   
+   Download PocketBase from [pocketbase.io](https://pocketbase.io/docs/) and create a `tasks` collection with the following schema:
+   
+   ```javascript
+   // Collection: tasks
+   {
+     "id": "string (auto-generated)",
+     "title": "string (required)",
+     "description": "string (optional)",
+     "category": "string (required) - options: work, personal, urgent, other",
+     "completed": "boolean (default: false)",
+     "order": "number (default: 0)",
+     "created": "datetime (auto)",
+     "updated": "datetime (auto)"
+   }
+   ```
+
+5. **Start PocketBase**
+   ```bash
+   ./pocketbase serve
+   ```
+
+6. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+7. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🌐 Live Demo
+
+**Live Application**: [https://your-app-name.vercel.app](https://your-app-name.vercel.app)
+
+> Replace with your actual Vercel deployment URL after deployment
+
+## 🏗️ Project Structure
+
+```
+velocity-task-manager/
+├── app/
+│   ├── components/          # React components
+│   │   ├── CategoryFilter.tsx
+│   │   ├── DeleteConfirmation.tsx
+│   │   ├── EmptyState.tsx
+│   │   ├── LoadingSkeleton.tsx
+│   │   ├── TaskForm.tsx
+│   │   ├── TaskItem.tsx
+│   │   ├── TaskList.tsx
+│   │   ├── Toast.tsx
+│   │   └── ToastProvider.tsx
+│   ├── hooks/              # Custom React hooks
+│   │   ├── useTasks.ts
+│   │   └── useToast.ts
+│   ├── lib/                # Utilities and types
+│   │   ├── pocketbase.ts
+│   │   └── types.ts
+│   ├── globals.css         # Global styles with glassmorphism
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Main page component
+├── public/                 # Static assets
+├── .env.local             # Environment variables
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Design System
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Glassmorphism Theme
+- **Background**: Gradient from purple to cyan
+- **Glass Cards**: Semi-transparent with backdrop blur
+- **Borders**: Subtle white borders with opacity
+- **Shadows**: Soft, layered shadows for depth
+- **Animations**: Smooth hover and interaction effects
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Color Palette
+- **Primary**: Purple to Cyan gradient
+- **Glass**: White with 10-30% opacity
+- **Categories**: 
+  - Work: Blue tones
+  - Personal: Green tones  
+  - Urgent: Red tones
+  - Other: Purple tones
 
-## Learn More
+## 🔧 Configuration
 
-To learn more about Next.js, take a look at the following resources:
+### Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_POCKETBASE_URL` | PocketBase server URL | `http://localhost:8090` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### PocketBase Setup
 
-## Deploy on Vercel
+1. **Download PocketBase** from the official website
+2. **Create the tasks collection** with the schema provided above
+3. **Configure CORS** if needed for your domain
+4. **Set up authentication** (optional) for multi-user support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recommended)
+
+1. **Connect your repository** to Vercel
+2. **Set environment variables** in Vercel dashboard
+3. **Deploy** - Vercel will automatically build and deploy
+
+### Other Platforms
+
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+### Key Technologies
+
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **PocketBase** - Backend-as-a-Service
+- **Lucide React** - Beautiful icons
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Design inspired by modern glassmorphism trends
+- Icons by [Lucide](https://lucide.dev/)
+- Animations powered by [Framer Motion](https://www.framer.com/motion/)
+- Backend by [PocketBase](https://pocketbase.io/)
+
+---
+
+**Built with ❤️ using Next.js and modern web technologies**
