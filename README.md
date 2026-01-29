@@ -7,9 +7,8 @@ A beautiful, modern task management application built with Next.js, featuring a 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.29.2-pink?style=for-the-badge&logo=framer)
 
-## ✨ Features
+## Features
 
-- **🎨 Glassmorphism Design** - Modern, translucent UI with backdrop blur effects
 - **⚡ Real-time Updates** - Live synchronization across all connected clients
 - **🔄 Drag & Drop** - Intuitive task reordering with smooth animations
 - **📱 Responsive Design** - Perfect experience on desktop, tablet, and mobile
@@ -37,7 +36,7 @@ A beautiful, modern task management application built with Next.js, featuring a 
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:Opia12345/velocity-task-manager.git
    cd velocity-task-manager
    ```
 
@@ -52,7 +51,7 @@ A beautiful, modern task management application built with Next.js, featuring a 
    
    Create a `.env.local` file in the root directory:
    ```env
-   NEXT_PUBLIC_POCKETBASE_URL=http://localhost:8090
+   NEXT_PUBLIC_POCKETBASE_URL=http://your-pocketbase-base-url
    ```
 
 4. **Set up PocketBase**
@@ -64,12 +63,13 @@ A beautiful, modern task management application built with Next.js, featuring a 
    {
      "id": "string (auto-generated)",
      "title": "string (required)",
-     "description": "string (optional)",
+     "description": "string (required)",
      "category": "string (required) - options: work, personal, urgent, other",
      "completed": "boolean (default: false)",
      "order": "number (default: 0)",
-     "created": "datetime (auto)",
-     "updated": "datetime (auto)"
+     "priority": "string (optional)",
+     "created": "datetime (auto-generated)",
+     "updated": "datetime (auto-generated)"
    }
    ```
 
@@ -124,24 +124,6 @@ velocity-task-manager/
 ├── package.json
 └── README.md
 ```
-
-## 🎨 Design System
-
-### Glassmorphism Theme
-- **Background**: Gradient from purple to cyan
-- **Glass Cards**: Semi-transparent with backdrop blur
-- **Borders**: Subtle white borders with opacity
-- **Shadows**: Soft, layered shadows for depth
-- **Animations**: Smooth hover and interaction effects
-
-### Color Palette
-- **Primary**: Purple to Cyan gradient
-- **Glass**: White with 10-30% opacity
-- **Categories**: 
-  - Work: Blue tones
-  - Personal: Green tones  
-  - Urgent: Red tones
-  - Other: Purple tones
 
 ## 🔧 Configuration
 
@@ -202,17 +184,11 @@ npm run lint     # Run ESLint
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Design inspired by modern glassmorphism trends
 - Icons by [Lucide](https://lucide.dev/)
 - Animations powered by [Framer Motion](https://www.framer.com/motion/)
 - Backend by [PocketBase](https://pocketbase.io/)
 
 ---
-
-**Built with ❤️ using Next.js and modern web technologies**
