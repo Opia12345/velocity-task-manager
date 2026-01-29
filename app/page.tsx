@@ -157,32 +157,42 @@ export default function Home() {
         />
 
         {/* Controls Section */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
-          {/* Search, Filter, and Sort */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:shrink-0">
-            <SearchBar
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-            />
-            <div className="flex gap-3">
-              <FilterDropdown
-                activeCategory={activeCategory}
-                activePriority={activePriority}
-                onCategoryChange={setActiveCategory}
-                onPriorityChange={setActivePriority}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+          {/* Left Side: Search, Filter, and Sort */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+            <div className="w-full sm:w-64 md:w-80">
+              <SearchBar
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
               />
-              <SortDropdown
-                sortBy={sortBy}
-                sortDirection={sortDirection}
-                onSortChange={handleSortChange}
-              />
+            </div>
+
+            <div className="flex gap-2 sm:gap-3">
+              <div className="">
+                <FilterDropdown
+                  activeCategory={activeCategory}
+                  activePriority={activePriority}
+                  onCategoryChange={setActiveCategory}
+                  onPriorityChange={setActivePriority}
+                />
+              </div>
+              <div className="">
+                <SortDropdown
+                  sortBy={sortBy}
+                  sortDirection={sortDirection}
+                  onSortChange={handleSortChange}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Add Task Button */}
-          <button onClick={() => setIsFormOpen(true)} className="task-button">
+          {/* Right Side: Add Task Button */}
+          <button
+            onClick={() => setIsFormOpen(true)}
+            className="task-button w-full lg:w-auto justify-center py-3 lg:py-2"
+          >
             <Plus size={20} />
-            <span>New Task</span>
+            <span className="font-medium">New Task</span>
           </button>
         </div>
 
