@@ -133,7 +133,7 @@ export function FilterDropdown({
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="absolute top-full right-0 mt-2 w-72 bg-white rounded-lg border border-gray-200 shadow-xl z-20 overflow-hidden"
+              className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg border border-gray-200 shadow-xl z-20 overflow-hidden"
             >
               {/* Header */}
               <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
